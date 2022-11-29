@@ -10,3 +10,20 @@ We provide the code of our model FT-VGAE for two datasets (Cora and Citeseer). F
 ```
 python3 ./FT-VGAE/main_cora.py
 ```
+
+## Citation
+
+@inproceedings{ijcai2022p465,
+  title     = {Escaping Feature Twist: A Variational Graph Auto-Encoder for Node Clustering },
+  author    = {Mrabah, Nairouz and Bouguessa, Mohamed and Ksantini, Riadh},
+  booktitle = {Proceedings of the Thirty-First International Joint Conference on
+               Artificial Intelligence, {IJCAI-22}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  editor    = {Lud De Raedt},
+  pages     = {3351--3357},
+  year      = {2022},
+  month     = {7},
+  note      = {Main Track},
+  doi       = {10.24963/ijcai.2022/465},
+  url       = {https://doi.org/10.24963/ijcai.2022/465},
+}
