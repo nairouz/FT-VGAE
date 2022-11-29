@@ -17,7 +17,7 @@ import matplotlib.patches as patches
 # Dataset Name
 dataset = "Cora"
 print("Cora dataset")
-adj, features, labels = load_data('cora', './Cora')
+adj, features, labels = load_data('cora', './data/Cora')
 nClusters_1 = 7
 nClusters_2 = 40
 n_neighbors_comp = 3
