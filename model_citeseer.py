@@ -256,7 +256,7 @@ class FT_VGAE(nn.Module):
         epoch_index = epoch + epoch_index
         return acc_best, nmi_best, ari_best, epoch_index
 
-    def train_phase_3_2(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="/home/mrabah_n/code/ICDM/Clus_VGAE/results/", dataset="Cora"):
+    def train_phase_3_2(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="./results/", dataset="Cora"):
         if optimizer ==  "Adam":
             opti = Adam(self.parameters(), lr=lr, weight_decay=0.001)
         elif optimizer == "SGD":
