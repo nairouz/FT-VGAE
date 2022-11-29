@@ -130,7 +130,7 @@ class FT_VGAE(nn.Module):
         self.assignment_1 = ClusterAssignment(self.nClusters_1, self.embedding_size, self.alpha)
         self.kl_loss = nn.KLDivLoss(size_average=False) 
                     
-    def train_1(self, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="/home/mrabah_n/code/ICDM/Clus_VGAE/results/", dataset="Cora"):
+    def train_phase_2(self, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="./results/", dataset="Cora"):
         if optimizer ==  "Adam":
             opti = Adam(self.parameters(), lr=lr, weight_decay=0.01)
         elif optimizer == "SGD":
@@ -202,7 +202,7 @@ class FT_VGAE(nn.Module):
         epoch_index = epoch_best
         return epoch_index
           
-    def train_2(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="/home/mrabah_n/code/ICDM/Clus_VGAE/results/", dataset="Cora"):
+    def train_phase_3_1(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="./results/", dataset="Cora"):
         assignment_2 = ClusterAssignment(self.nClusters_2, self.embedding_size, self.alpha).to("cuda:0")
         if optimizer ==  "Adam":
             opti = Adam(self.parameters(), lr=lr, weight_decay=0.001)
@@ -256,7 +256,7 @@ class FT_VGAE(nn.Module):
         epoch_index = epoch + epoch_index
         return acc_best, nmi_best, ari_best, epoch_index
 
-    def train_3(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="/home/mrabah_n/code/ICDM/Clus_VGAE/results/", dataset="Cora"):
+    def train_phase_3_2(self, acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="/home/mrabah_n/code/ICDM/Clus_VGAE/results/", dataset="Cora"):
         if optimizer ==  "Adam":
             opti = Adam(self.parameters(), lr=lr, weight_decay=0.001)
         elif optimizer == "SGD":
