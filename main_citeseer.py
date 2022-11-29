@@ -67,13 +67,13 @@ for n_neighbors_comp in [3, 5, 7, 9, 11]:
     for nClusters_2 in [150, 150, 150, 150, 150]:     
         network = FT_VGAE(n_neighbors_comp=n_neighbors_comp, num_neurons=num_neurons, num_features=num_features, embedding_size=embedding_size, nClusters_1=nClusters_1, nClusters_2=nClusters_2, activation="ReLU", alpha=alpha, gamma_1=gamma_1, gamma_2=gamma_2).to("cuda:0")
         network.load_state_dict(torch.load(save_path + dataset + '/T0/model_best.pk'))
-        epoch_index = network.train_1(epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T1, lr=lr_T1, save_path=save_path, dataset=dataset)
+        epoch_index = network.train_phase_2(epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T1, lr=lr_T1, save_path=save_path, dataset=dataset)
         epoch_index = epoch_index + 1
         acc_best, nmi_best, ari_best = 0, 0, 0
         for i in range(100):
-            acc_best, nmi_best, ari_best, epoch_index = network.train_2(acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T2, lr=lr_T2, save_path=save_path, dataset=dataset)
+            acc_best, nmi_best, ari_best, epoch_index = network.train_phase_3_1(acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T2, lr=lr_T2, save_path=save_path, dataset=dataset)
             epoch_index = epoch_index + 1
-            acc_best, nmi_best, ari_best, epoch_index = network.train_3(acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T3, lr=lr_T3, save_path=save_path, dataset=dataset)
+            acc_best, nmi_best, ari_best, epoch_index = network.train_phase_3_2(acc_best, nmi_best, ari_best, epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T3, lr=lr_T3, save_path=save_path, dataset=dataset)
             epoch_index = epoch_index + 1
         logdict = dict(n_neighbors_comp=n_neighbors_comp, nClusters_2=nClusters_2, acc=acc_best, nmi=nmi_best, ari=ari_best)
         logwriter.writerow(logdict)
