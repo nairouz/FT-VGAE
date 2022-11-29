@@ -69,7 +69,7 @@ for n_neighbors_comp in [3, 5, 7, 9, 11]:
     for nClusters_2 in [50, 100, 150, 200, 250]:    
         network = FT_VGAE(n_neighbors_comp=n_neighbors_comp, num_neurons=num_neurons, num_features=num_features, embedding_size=embedding_size, nClusters_1=nClusters_1, nClusters_2=nClusters_2, activation="ReLU", alpha=alpha, gamma_1=gamma_1, gamma_2=gamma_2).to("cuda:0")
         network.load_state_dict(torch.load(save_path + dataset + '/T0/model_best.pk'))
-        epoch_index = network.train_phase_1(epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T1, lr=lr_T1, save_path=save_path, dataset=dataset)
+        epoch_index = network.train_phase_2(epoch_index, adj_norm, features, adj_label, labels, weight_tensor_orig, norm, optimizer="Adam", epochs=epochs_T1, lr=lr_T1, save_path=save_path, dataset=dataset)
         epoch_index = epoch_index + 1
         acc_best, nmi_best, ari_best = 0, 0, 0
         for i in range(50):
