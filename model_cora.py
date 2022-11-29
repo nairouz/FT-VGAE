@@ -130,7 +130,7 @@ class FT_VGAE(nn.Module):
         self.assignment_1 = ClusterAssignment(self.nClusters_1, self.embedding_size, self.alpha)
         self.kl_loss = nn.KLDivLoss(size_average=False) 
                     
-    def train_phase_1(self, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="./results/", dataset="Cora"):
+    def train_phase_2(self, epoch_index, adj_norm, features, adj_label, y, weight_tensor, norm, optimizer="Adam", epochs=200, lr=0.01, save_path="./results/", dataset="Cora"):
         if optimizer ==  "Adam":
             opti = Adam(self.parameters(), lr=lr, weight_decay=0.01)
         elif optimizer == "SGD":
