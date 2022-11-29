@@ -17,7 +17,7 @@ import matplotlib.patches as patches
 # Dataset Name
 dataset = "Citeseer"
 print("Citeseer dataset")
-adj, features, labels = load_data('citeseer', '/content/drive/MyDrive/Colab/FT-VGAE/data/Citeseer')
+adj, features, labels = load_data('citeseer', './data/Citeseer')
 nClusters_1 = 6
 
 # Network parameters
@@ -26,7 +26,7 @@ gamma_1 = 1.
 gamma_2 = 1.
 num_neurons = 32
 embedding_size = 16
-save_path = "/content/drive/MyDrive/Colab/FT-VGAE/results/"
+save_path = "./results/"
 
 # T1 parameters
 epochs_T1 = 100
